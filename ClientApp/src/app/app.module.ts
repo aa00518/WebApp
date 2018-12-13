@@ -49,11 +49,15 @@ import {
   MatTreeModule 
 } from '@angular/material';
 import { HomeComponent } from './components/home/home.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { SettingsComponent } from './components/settings/settings.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    DashboardComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
