@@ -49,15 +49,18 @@ import {
   MatTreeModule 
 } from '@angular/material';
 import { HomeComponent } from './components/home/home.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SettingsComponent } from './components/settings/settings.component';
+import { MainDashboardComponent } from './components/main-dashboard/main-dashboard.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MainTableComponent } from './components/main-table/main-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    DashboardComponent,
-    SettingsComponent
+    SettingsComponent,
+    MainDashboardComponent,
+    MainTableComponent
   ],
   imports: [
     BrowserModule,
@@ -104,7 +107,8 @@ import { SettingsComponent } from './components/settings/settings.component';
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
-    ScrollingModule 
+    ScrollingModule,
+    LayoutModule 
   ],
   providers: [],
   bootstrap: [ AppComponent ]

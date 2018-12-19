@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { MainDashboardComponent } from './components/main-dashboard/main-dashboard.component';
+import { MainTableComponent } from './components/main-table/main-table.component';
 import { SettingsComponent } from './components/settings/settings.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'main-dashboard', component: MainDashboardComponent },
+  { path: 'main-table', component: MainTableComponent },
   { path: 'settings', component: SettingsComponent }
 ];
 

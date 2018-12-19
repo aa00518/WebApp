@@ -1,24 +1,28 @@
-import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
-import { MediaMatcher } from '@angular/cdk/layout';
+import { Component, ViewChild } from '@angular/core';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { MatSidenav } from '@angular/material';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnDestroy {
-  public appTitle: string = 'Web App';
-  public mobileQuery: MediaQueryList;
+export class AppComponent {
+  
+  @ViewChild('drawer') drawer: MatSidenav;
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
+    map(result => result.matches)
+  );
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
-    this.mobileQuery = media.matchMedia('(max-width: 600px)');
-    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-    this.mobileQuery.addListener(this._mobileQueryListener);
+  constructor(private breakpointObserver: BreakpointObserver) {  }
+
+  closeDrawer() {
+    this.isHandset$.subscribe(r => {
+      if (r) {
+        this.drawer.close();
+      }
+    });
   }
-
-  ngOnDestroy(): void {
-    this.mobileQuery.removeListener(this._mobileQueryListener);
-  }
-
-  private _mobileQueryListener: () => void;
 }
