@@ -37,6 +37,7 @@ namespace WebApp.Controllers
         }
 
         [HttpGet]
+        [Route("Get")]
         public IEnumerable<ProTraQPlants> Get()
         {
             DbConnection cn = new SqlConnection(ConnectionStrings.fr_sql_07_pd_ProTraQ_CorporateTables);
@@ -46,7 +47,8 @@ namespace WebApp.Controllers
             return results;
         }
 
-        [HttpGet("GetWithSignalR")]
+        [HttpGet]
+        [Route("GetWithSignalR")]
         public IEnumerable<ProTraQPlants> GetWithSignalR()
         {
             DbConnection cn = new SqlConnection(ConnectionStrings.fr_sql_07_pd_ProTraQ_CorporateTables);

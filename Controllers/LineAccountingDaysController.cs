@@ -11,6 +11,7 @@ namespace WebApp.Controllers
     public class LineAccountingDaysController : Controller
     {
         [HttpGet]
+        [Route("GetLineAccountingDays")]
         public IEnumerable<LineAccountingDays> GetLineAccountingDays()
         {
             DbConnection cn = new SqlConnection(ConnectionStrings.ProTraQ869);

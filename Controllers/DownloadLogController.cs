@@ -22,7 +22,8 @@ namespace WebApp.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<DownloadLog> Getfr_sql_07_pd()
+        [Route("GetFRRep")]
+        public IEnumerable<DownloadLog> GetFRRep()
         {
             DbConnection cn = new SqlConnection(ConnectionStrings.fr_sql_07_pd_ProTraQ_Corporate_V1);
             IDownloadLogRepository downloadLog = cn.As<IDownloadLogRepository>();
