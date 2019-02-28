@@ -5,14 +5,17 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Insight.Database;
+using WebApp.Hubs;
 
-namespace webapp
+namespace WebApp
 {
     public class Startup
     {
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            SqlInsightDbProvider.RegisterProvider();
         }
 
         public IConfiguration Configuration { get; }
@@ -27,6 +30,8 @@ namespace webapp
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,6 +49,7 @@ namespace webapp
             }
 
             app.UseHttpsRedirection();
+            app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
@@ -52,6 +58,11 @@ namespace webapp
                 routes.MapRoute(
                     name: "default",
                     template: "{controller}/{action=Index}/{id?}");
+            });
+
+            app.UseSignalR(options =>
+            {
+                options.MapHub<SandboxHub>("/hub");
             });
 
             app.UseSpa(spa =>
