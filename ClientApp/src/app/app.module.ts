@@ -53,6 +53,7 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { MainDashboardComponent } from './components/main-dashboard/main-dashboard.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MainTableComponent } from './components/main-table/main-table.component';
+import { DownloadLogClient, LineAccountingDaysClient, ProTraQPlantsClient, SampleDataClient } from './services/generated';
 
 @NgModule({
   declarations: [
@@ -110,7 +111,7 @@ import { MainTableComponent } from './components/main-table/main-table.component
     ScrollingModule,
     LayoutModule 
   ],
-  providers: [],
+  providers: [ DownloadLogClient, LineAccountingDaysClient, ProTraQPlantsClient, SampleDataClient ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
