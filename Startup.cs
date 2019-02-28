@@ -7,6 +7,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Insight.Database;
 using WebApp.Hubs;
+using NJsonSchema;
+using NSwag.AspNetCore;
 
 namespace WebApp
 {
@@ -31,6 +33,7 @@ namespace WebApp
                 configuration.RootPath = "ClientApp/dist";
             });
 
+            services.AddSwaggerDocument();
             services.AddSignalR();
         }
 
@@ -52,6 +55,9 @@ namespace WebApp
             app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
+
+            app.UseSwagger();
+            app.UseSwaggerUi3();
 
             app.UseMvc(routes =>
             {
