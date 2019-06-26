@@ -1,0 +1,127 @@
+<div fxLayout="row wrap" fxLayoutAlign="center">
+  <mat-card class="basic-card" fxFlex="1 1 30%" fxFlex.lt-md="1 1 45%" fxFlex.lt-sm="1 1 95%">
+    <mat-card-header>
+      <mat-card-title>
+        Batting
+        <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu1" aria-label="Toggle menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu1="matMenu" xPosition="before">
+          <button mat-menu-item (click)="clearAtBat()">Clear At Bat</button>
+          <button mat-menu-item (click)="clearInning()">Clear Inning</button>
+        </mat-menu>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="dashboard-card-content">
+      <div class="marg">Balls</div>
+      <div>
+        <button class="marg" mat-raised-button color="primary" (click)="subtractBall()">-</button>
+        {{ balls }}
+        <button class="marg" mat-raised-button color="primary" (click)="addBall()">+</button>
+      </div>
+      <div class="marg marg-top">Strikes</div>
+      <div>
+        <button class="marg" mat-raised-button color="primary" (click)="subtractStrike()">-</button>
+        {{ strikes }}
+        <button class="marg" mat-raised-button color="primary" (click)="addStrike()">+</button>
+      </div>
+      <div class="marg marg-top">
+        <button mat-raised-button color="accent" (click)="clearAtBat()">Clear At Bat</button>
+      </div>
+      <div class="marg marg-top">Outs</div>
+      <div>
+        <button class="marg" mat-raised-button color="primary" (click)="subtractOut()">-</button>
+        {{ outs }}
+        <button class="marg" mat-raised-button color="primary" (click)="addOut()">+</button>
+      </div>
+      <div class="marg marg-top">
+        <button mat-raised-button color="accent" (click)="clearInning()">Clear Inning</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="basic-card" fxFlex="1 1 30%" fxFlex.lt-md="1 1 45%" fxFlex.lt-sm="1 1 95%">
+    <mat-card-header>
+      <mat-card-title>
+        Card Title
+        <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu" xPosition="before">
+          <button mat-menu-item>Expand</button>
+          <button mat-menu-item>Remove</button>
+        </mat-menu>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="dashboard-card-content">
+      <div>Card Content Here</div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="basic-card" fxFlex="1 1 30%" fxFlex.lt-md="1 1 45%" fxFlex.lt-sm="1 1 95%">
+    <mat-card-header>
+      <mat-card-title>
+        Card Title
+        <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu" xPosition="before">
+          <button mat-menu-item>Expand</button>
+          <button mat-menu-item>Remove</button>
+        </mat-menu>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="dashboard-card-content">
+      <div>Card Content Here</div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="basic-card" fxFlex="1 1 30%" fxFlex.lt-md="1 1 45%" fxFlex.lt-sm="1 1 95%">
+    <mat-card-header>
+      <mat-card-title>
+        This One
+        <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu4" aria-label="Toggle menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu4="matMenu" xPosition="before">
+          <button mat-menu-item (click)="expandClick()">Expand</button>
+          <button mat-menu-item (click)="removeClick()">Remove</button>
+        </mat-menu>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="dashboard-card-content">
+      <div>Card Content Here</div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="basic-card" fxFlex="1 1 30%" fxFlex.lt-md="1 1 45%" fxFlex.lt-sm="1 1 95%">
+    <mat-card-header>
+      <mat-card-title>
+        Card Title
+        <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu" xPosition="before">
+          <button mat-menu-item>Expand</button>
+          <button mat-menu-item>Remove</button>
+        </mat-menu>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="dashboard-card-content">
+      <div>Card Content Here</div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="basic-card" fxFlex="1 1 30%" fxFlex.lt-md="1 1 45%" fxFlex.lt-sm="1 1 95%">
+    <mat-card-header>
+      <mat-card-title>
+        Card Title
+        <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu" xPosition="before">
+          <button mat-menu-item>Expand</button>
+          <button mat-menu-item>Remove</button>
+        </mat-menu>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="dashboard-card-content">
+      <div>Card Content Here</div>
+    </mat-card-content>
+  </mat-card>
+</div>

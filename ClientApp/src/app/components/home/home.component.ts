@@ -12,4 +12,8 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
+  btnClick() {
+    console.log("Yo.");
+  }
+
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatSort } from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { MainTableDataSource } from './main-table-datasource';
 import { SampleDataClient, WeatherForecast, DownloadLogClient, DownloadLog } from '../../services/generated';
 
@@ -10,8 +11,8 @@ import { SampleDataClient, WeatherForecast, DownloadLogClient, DownloadLog } fro
 })
 export class MainTableComponent implements OnInit {
   
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
   
   public dataSource: MainTableDataSource;
   public wf: WeatherForecast[];
