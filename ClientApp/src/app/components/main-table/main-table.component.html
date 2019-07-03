@@ -1,33 +1,3 @@
-<div *ngIf="downloadLog" class="mat-elevation-z8">
-  <table mat-table class="full-width-table" [dataSource]="downloadLog" aria-label="Elements">
-    <ng-container matColumnDef="tableName">
-      <th mat-header-cell *matHeaderCellDef>Table</th>
-      <td mat-cell *matCellDef="let row">{{ row.tableName }}</td>
-    </ng-container>
-    <ng-container matColumnDef="comparisonType">
-      <th mat-header-cell *matHeaderCellDef>Type</th>
-      <td mat-cell *matCellDef="let row">{{ row.comparisonType }}</td>
-    </ng-container>
-    <ng-container matColumnDef="startDT">
-      <th mat-header-cell *matHeaderCellDef>Run Date</th>
-      <td mat-cell *matCellDef="let row">{{ row.startDT | date: "MM/dd/yyyy hh:mm:ss" }}</td>
-    </ng-container>
-    <ng-container matColumnDef="resultCode">
-      <th mat-header-cell *matHeaderCellDef>Code</th>
-      <td mat-cell *matCellDef="let row">{{ row.resultCode }}</td>
-    </ng-container>
-    <ng-container matColumnDef="resultText">
-      <th mat-header-cell *matHeaderCellDef>Result</th>
-      <td mat-cell *matCellDef="let row">{{ row.resultText }}</td>
-    </ng-container>
-    <ng-container matColumnDef="detailText">
-      <th mat-header-cell *matHeaderCellDef>Message</th>
-      <td mat-cell *matCellDef="let row">{{ row.detailText }}</td>
-    </ng-container>
-    <tr mat-header-row *matHeaderRowDef="displayedColumnsDL"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumnsDL;"></tr>
-  </table>
-</div>
 <div *ngIf="wf" class="mat-elevation-z8">
   <table mat-table class="full-width-table" [dataSource]="wf" aria-label="Elements">
     <ng-container matColumnDef="summary">
@@ -40,6 +10,20 @@
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumnsWeather"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumnsWeather;"></tr>
+  </table>
+</div>
+<div *ngIf="toDos" class="mat-elevation-z8">
+  <table mat-table class="full-width-table" [dataSource]="toDos" aria-label="Elements">
+    <ng-container matColumnDef="toDoItem">
+      <th mat-header-cell *matHeaderCellDef>To Do Item</th>
+      <td mat-cell *matCellDef="let row">{{ row.toDoItem }}</td>
+    </ng-container>
+    <ng-container matColumnDef="dateAdded">
+      <th mat-header-cell *matHeaderCellDef>Date Added</th>
+      <td mat-cell *matCellDef="let row">{{ row.dateAdded }}</td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumnsToDos"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumnsToDos;"></tr>
   </table>
 </div>
 <div class="mat-elevation-z8">

@@ -13,3 +13,14 @@ https://devblogs.microsoft.com/premier-developer/running-a-net-core-web-applicat
 docker run -d -p 8080:80 –name erpdata erpdataapp
 
 http://localhost:8080/
+
+website/swagger
+
+How to create middle layer on client side:
+Need to use NSwag tool
+Navigate to website/swagger
+Click on the link that shows the swagger json
+Copy that link into NSwag tool
+Configure typescript output
+Generate file to create ~/services/generated.ts
+Need to add service providers to app ngModule

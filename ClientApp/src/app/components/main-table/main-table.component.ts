@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MainTableDataSource } from './main-table-datasource';
-import { SampleDataClient, WeatherForecast, DownloadLogClient, DownloadLog } from '../../services/generated';
+import { SampleDataClient, WeatherForecast, ToDoClient, ToDo } from '../../services/generated';
 
 @Component({
   selector: 'app-main-table',
@@ -16,21 +16,20 @@ export class MainTableComponent implements OnInit {
   
   public dataSource: MainTableDataSource;
   public wf: WeatherForecast[];
-  public downloadLog: DownloadLog[];
   public displayedColumns = ['id', 'name'];
   public displayedColumnsWeather = ['summary', 'temperatureF'];
-  public displayedColumnsDL = ['tableName', 'comparisonType', 'startDT', 'resultCode', 'resultText', 'detailText'];
+  public displayedColumnsToDos = ['toDoItem', 'dateAdded'];
+  public toDos: ToDo[];
 
-  constructor(private sdc: SampleDataClient, private dlc: DownloadLogClient) {  }
+  constructor(private sdc: SampleDataClient, private tdc: ToDoClient) {  }
 
   ngOnInit() {
     this.dataSource = new MainTableDataSource(this.paginator, this.sort);
     this.sdc.weatherForecasts().subscribe(r => {
       this.wf = r;
-      //console.log(this.wf);
     });
-    this.dlc.getFRRep().subscribe(r => {
-      this.downloadLog = r;
+    this.tdc.get().subscribe(r => {
+      this.toDos = r;
     });
   }
 }

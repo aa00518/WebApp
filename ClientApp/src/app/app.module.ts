@@ -51,8 +51,10 @@ import { MainDashboardComponent } from './components/main-dashboard/main-dashboa
 import { LayoutModule } from '@angular/cdk/layout';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MainTableComponent } from './components/main-table/main-table.component';
-import { DownloadLogClient, LineAccountingDaysClient, ProTraQPlantsClient, SampleDataClient } from './services/generated';
+import { SampleDataClient, API_BASE_URL, ToDoClient } from './services/generated';
 import { NewDashboardComponent } from './components/new-dashboard/new-dashboard.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -110,9 +112,10 @@ import { NewDashboardComponent } from './components/new-dashboard/new-dashboard.
     MatTreeModule,
     ScrollingModule,
     LayoutModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [ DownloadLogClient, LineAccountingDaysClient, ProTraQPlantsClient, SampleDataClient ],
+  providers: [ SampleDataClient, { provide: API_BASE_URL, useValue: environment.apiBase }, ToDoClient ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
