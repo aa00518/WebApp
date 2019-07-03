@@ -16,4 +16,7 @@ export class HomeComponent implements OnInit {
     console.log("Yo.");
   }
 
+  private wootClick(): void {
+    console.log("Woot! was clicked!");
+  }
 }
