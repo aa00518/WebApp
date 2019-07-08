@@ -26,10 +26,14 @@ export class MainTableComponent implements OnInit {
   ngOnInit() {
     this.dataSource = new MainTableDataSource(this.paginator, this.sort);
     this.sdc.weatherForecasts().subscribe(r => {
-      this.wf = r;
+      setTimeout(() => {
+        this.wf = r;
+      }, 1000);
     });
     this.tdc.get().subscribe(r => {
-      this.toDos = r;
+      setTimeout(() => {
+        this.toDos = r;
+      }, 1500);
     });
   }
 }

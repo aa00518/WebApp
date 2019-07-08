@@ -1,3 +1,11 @@
+<ng-container *ngIf="!wf">
+  <div fxLayout="row" fxLayoutAlign="center">
+    <img src="assets/images/loading.gif" height="80" width="80">
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center">
+    <h5>Loading...</h5>
+  </div>
+</ng-container>
 <div *ngIf="wf" class="mat-elevation-z8">
   <table mat-table class="full-width-table" [dataSource]="wf" aria-label="Elements">
     <ng-container matColumnDef="summary">
@@ -12,6 +20,14 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumnsWeather;"></tr>
   </table>
 </div>
+<ng-container *ngIf="!toDos">
+  <div fxLayout="row" fxLayoutAlign="center">
+    <img src="assets/images/loading.gif" height="80" width="80">
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center">
+    <h5>Loading...</h5>
+  </div>
+</ng-container>
 <div *ngIf="toDos" class="mat-elevation-z8">
   <table mat-table class="full-width-table" [dataSource]="toDos" aria-label="Elements">
     <ng-container matColumnDef="toDoItem">

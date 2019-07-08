@@ -42,18 +42,27 @@
   <mat-card class="basic-card" fxFlex="1 1 30%" fxFlex.lt-md="1 1 45%" fxFlex.lt-sm="1 1 95%">
     <mat-card-header>
       <mat-card-title>
-        Card Title
-        <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+        Add To Do
+        <button mat-icon-button class="more-button" [matMenuTriggerFor]="menuToDo" aria-label="Toggle menu">
           <mat-icon>more_vert</mat-icon>
         </button>
-        <mat-menu #menu="matMenu" xPosition="before">
-          <button mat-menu-item>Expand</button>
-          <button mat-menu-item>Remove</button>
+        <mat-menu #menuToDo="matMenu" xPosition="before">
+          <button mat-menu-item (click)="clearToDo()">Clear</button>
         </mat-menu>
       </mat-card-title>
     </mat-card-header>
     <mat-card-content class="dashboard-card-content">
-      <div>Card Content Here</div>
+      <mat-form-field>
+        <input matInput type="text" placeholder="To Do" [formControl]="toDoControl" required>
+        <mat-error *ngIf="toDoControl.invalid">Required</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Date" [formControl]="dateAddedControl" required>
+        <mat-error *ngIf="dateAddedControl.invalid">Required</mat-error>
+      </mat-form-field>
+      <div>
+        <button mat-raised-button color="accent" (click)="addToDo()">Add</button>
+      </div>
     </mat-card-content>
   </mat-card>
   <mat-card class="basic-card" fxFlex="1 1 30%" fxFlex.lt-md="1 1 45%" fxFlex.lt-sm="1 1 95%">
