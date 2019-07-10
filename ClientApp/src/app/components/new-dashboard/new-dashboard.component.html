@@ -52,17 +52,19 @@
       </mat-card-title>
     </mat-card-header>
     <mat-card-content class="dashboard-card-content">
-      <mat-form-field>
-        <input matInput type="text" placeholder="To Do" [formControl]="toDoControl" required>
-        <mat-error *ngIf="toDoControl.invalid">Required</mat-error>
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput type="text" placeholder="Date" [formControl]="dateAddedControl" required>
-        <mat-error *ngIf="dateAddedControl.invalid">Required</mat-error>
-      </mat-form-field>
-      <div>
-        <button mat-raised-button color="accent" (click)="addToDo()">Add</button>
-      </div>
+      <form [formGroup]="addToDoForm" (ngSubmit)="onSubmit($event)">
+        <mat-form-field fxLayout="row" fxLayoutAlign="center">
+          <input matInput type="text" placeholder="To Do" formControlName="toDoControl" required>
+          <mat-error *ngIf="addToDoForm.get('toDoControl').invalid">Required</mat-error>
+        </mat-form-field>
+        <mat-form-field fxLayout="row" fxLayoutAlign="center">
+          <input matInput type="text" placeholder="Date" formControlName="dateAddedControl" required>
+          <mat-error *ngIf="addToDoForm.get('dateAddedControl').invalid">Required</mat-error>
+        </mat-form-field>
+        <div fxLayout="row" fxLayoutAlign="center">
+          <button type="submit" mat-raised-button color="accent" [disabled]="!addToDoForm.valid">Add</button>
+        </div>
+      </form>
     </mat-card-content>
   </mat-card>
   <mat-card class="basic-card" fxFlex="1 1 30%" fxFlex.lt-md="1 1 45%" fxFlex.lt-sm="1 1 95%">
@@ -85,13 +87,13 @@
   <mat-card class="basic-card" fxFlex="1 1 30%" fxFlex.lt-md="1 1 45%" fxFlex.lt-sm="1 1 95%">
     <mat-card-header>
       <mat-card-title>
-        This One
+        Card Title
         <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu4" aria-label="Toggle menu">
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu4="matMenu" xPosition="before">
-          <button mat-menu-item (click)="expandClick()">Expand</button>
-          <button mat-menu-item (click)="removeClick()">Remove</button>
+          <button mat-menu-item>Expand</button>
+          <button mat-menu-item>Remove</button>
         </mat-menu>
       </mat-card-title>
     </mat-card-header>

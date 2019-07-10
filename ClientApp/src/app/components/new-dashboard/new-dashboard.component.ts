@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ToDoClient, ToDo } from './../../services/generated';
 
@@ -21,8 +21,10 @@ export class NewDashboardComponent implements OnInit {
   private readonly minOuts: number = 0;
   private readonly maxOuts: number = 3;
 
-  public toDoControl = new FormControl('', [Validators.required]);
-  public dateAddedControl = new FormControl('', [Validators.required]);
+  public addToDoForm = new FormGroup({
+    toDoControl: new FormControl('', [Validators.required]),
+    dateAddedControl: new FormControl('', [Validators.required])
+  });
 
   constructor(private sb: MatSnackBar, private todo: ToDoClient) { }
 
@@ -82,40 +84,26 @@ export class NewDashboardComponent implements OnInit {
     this.outs = 0;
   }
 
-  expandClick() {
-    //alert("You clicked expand.");
-    console.log("Bye.");
-  }
-
-  removeClick() {
-    //alert("You clicked remove.");
-    console.log("Hi.");
-  }
-
-  public addToDo(): void {
-    if (this.toDoControl.value.trim() === "") {
-      this.toDoControl.setErrors({ error: true });
-      this.toDoControl.setValue("");
-      return;
-    }
-
-    if (this.dateAddedControl.value.trim() === "") {
-      this.dateAddedControl.setErrors({ error: true });
-      this.dateAddedControl.setValue("");
-      return;
-    }
-
+  onSubmit(event) {
     let toDo = new ToDo();
-    toDo.toDoItem = this.toDoControl.value.trim();
-    toDo.dateAdded = this.dateAddedControl.value.trim();
-    this.todo.insertToDo(toDo).subscribe(() => {
-      this.clearToDo();
-      this.sb.open("To Do added!", "Ok", { duration: 2000 });
-    });
+    toDo.toDoItem = this.addToDoForm.get("toDoControl").value;
+    toDo.dateAdded = this.addToDoForm.get("dateAddedControl").value;
+    toDo.toDoItem = toDo.toDoItem.trim();
+    toDo.dateAdded = toDo.dateAdded.trim();
+
+    if (toDo.toDoItem === "" || toDo.dateAdded === "") {
+      this.sb.open("Nothing added!", "Try Again", { duration: 2000 });
+    } else {
+      this.todo.insertToDo(toDo).subscribe(() => {
+        this.sb.open("To Do added!", "Ok", { duration: 2000 });
+      });
+    }
+
+    event.currentTarget.reset();
+    this.addToDoForm.reset({ toDoControl: '', dateAddedControl: '' });
   }
 
   public clearToDo(): void {
-    this.toDoControl.reset();
-    this.dateAddedControl.reset();
+    this.addToDoForm.reset({ toDoControl: '', dateAddedControl: '' });
   }
 }

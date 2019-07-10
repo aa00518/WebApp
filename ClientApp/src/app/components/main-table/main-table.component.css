@@ -1,3 +1,11 @@
 .full-width-table {
   width: 100%;
 }
+
+.margins {
+  margin: 10px;
+}
+
+.margin-just-left {
+  margin-left: 20px;
+}

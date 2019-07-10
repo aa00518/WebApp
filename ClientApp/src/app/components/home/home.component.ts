@@ -11,12 +11,4 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  btnClick() {
-    console.log("Yo.");
-  }
-
-  public wootClick(): void {
-    console.log("Woot! was clicked!");
-  }
 }
