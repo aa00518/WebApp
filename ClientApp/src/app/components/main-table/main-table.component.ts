@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 //import { MatPaginator } from '@angular/material/paginator';
 //import { MatSort } from '@angular/material/sort';
 //import { MainTableDataSource } from './main-table-datasource';
@@ -18,12 +19,12 @@ export class MainTableComponent implements OnInit {
   //public displayedColumns = ['id', 'name'];
   
   public toDos: ToDo[];
-  public displayedColumnsToDos = ['toDoItem', 'dateAdded'];
+  public displayedColumnsToDos = ['id', 'toDoItem', 'dateAdded'];
   
   public wf: WeatherForecast[];
   public displayedColumnsWeather = ['summary', 'temperatureF'];
 
-  constructor(private sdc: SampleDataClient, private tdc: ToDoClient) {  }
+  constructor(private sdc: SampleDataClient, private tdc: ToDoClient, private sb: MatSnackBar) {  }
 
   ngOnInit() {
     this.tdc.get().subscribe(r => {
@@ -34,5 +35,16 @@ export class MainTableComponent implements OnInit {
       this.wf = r;
     });
     //this.dataSource = new MainTableDataSource(this.paginator, this.sort);
+  }
+
+  public deleteToDo(id: number): void {
+    let toDo: ToDo = new ToDo();
+    toDo.id = id;
+    this.tdc.deleteToDo(toDo).subscribe(() => {
+      this.tdc.get().subscribe(r => {
+        this.toDos = r;
+        this.sb.open("Item deleted.", "Deleted", { duration: 2000 });
+      });
+    });
   }
 }
