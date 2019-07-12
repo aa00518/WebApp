@@ -2,7 +2,7 @@
   <mat-sidenav name="drawer" #drawer class="sidenav" fixedInViewport="true"
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="!(isHandset$ | async)">
+      [opened]="!(isHandset$ | async)" autoFocus="false">
     <mat-nav-list>
       <a mat-list-item routerLink="/" (click)="closeDrawer()">
         <mat-icon class="icon">home</mat-icon>

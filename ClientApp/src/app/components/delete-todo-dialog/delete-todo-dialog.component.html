@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Delete To Do?</h1>
+<div mat-dialog-content>
+  Are you sure you want to delete {{ data.toDoItem }}?
+</div>
+<div mat-dialog-actions>
+  <button type="button" mat-raised-button color="primary" [mat-dialog-close]="data.id">Yes</button>
+  <button type="button" mat-raised-button color="primary" (click)="onNoClick()">No</button>
+</div>

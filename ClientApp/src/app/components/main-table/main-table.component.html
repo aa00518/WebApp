@@ -14,7 +14,7 @@
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef style="width: 25%;"></th>
       <td mat-cell *matCellDef="let row">
-        <button type="button" mat-stroked-button color="accent" (click)="deleteToDo(row.id)">Del</button>
+        <button type="button" mat-stroked-button (click)="showDeleteToDoDialog(row.id)"><mat-icon>delete</mat-icon></button>
       </td>
     </ng-container>
     <ng-container matColumnDef="toDoItem">

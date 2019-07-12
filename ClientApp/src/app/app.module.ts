@@ -55,6 +55,8 @@ import { SampleDataClient, API_BASE_URL, ToDoClient } from './services/generated
 import { NewDashboardComponent } from './components/new-dashboard/new-dashboard.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { DeleteTodoDialogComponent } from './components/delete-todo-dialog/delete-todo-dialog.component';
+import { UpdateTodoDialogComponent } from './components/update-todo-dialog/update-todo-dialog.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +65,9 @@ import { environment } from '../environments/environment';
     SettingsComponent,
     MainDashboardComponent,
     MainTableComponent,
-    NewDashboardComponent
+    NewDashboardComponent,
+    DeleteTodoDialogComponent,
+    UpdateTodoDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -115,6 +119,7 @@ import { environment } from '../environments/environment';
     FlexLayoutModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
+  entryComponents: [ DeleteTodoDialogComponent ],
   providers: [ SampleDataClient, { provide: API_BASE_URL, useValue: environment.apiBase }, ToDoClient ],
   bootstrap: [ AppComponent ]
 })
