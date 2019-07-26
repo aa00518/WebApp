@@ -57,10 +57,10 @@
           <input matInput type="text" placeholder="To Do" formControlName="toDoControl" required>
           <mat-error *ngIf="addToDoForm.get('toDoControl').invalid">Required</mat-error>
         </mat-form-field>
-        <mat-form-field fxLayout="row" fxLayoutAlign="center">
+        <!--<mat-form-field fxLayout="row" fxLayoutAlign="center">
           <input matInput type="text" placeholder="Date" formControlName="dateAddedControl" required>
           <mat-error *ngIf="addToDoForm.get('dateAddedControl').invalid">Required</mat-error>
-        </mat-form-field>
+        </mat-form-field>-->
         <div fxLayout="row" fxLayoutAlign="center">
           <button type="submit" mat-raised-button color="accent" [disabled]="!addToDoForm.valid">Add</button>
         </div>

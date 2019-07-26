@@ -21,7 +21,7 @@ export class MainTableComponent implements OnInit {
   //public displayedColumns = ['id', 'name'];
   
   public toDos: ToDo[];
-  public displayedColumnsToDos = ['id', 'toDoItem', 'dateAdded'];
+  public displayedColumnsToDos = ['toDoItem', 'dateAdded', 'id'];
   
   public wf: WeatherForecast[];
   public displayedColumnsWeather = ['summary', 'temperatureF'];

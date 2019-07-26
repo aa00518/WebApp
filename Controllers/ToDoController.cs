@@ -37,7 +37,8 @@ namespace WebApp.Controllers
         public int InsertToDo([FromBody]ToDo toDo)
         {
             SqliteConnection cn = new SqliteConnection(ConnectionStrings.sqliteDB.ConnectionString);
-            return cn.ExecuteSql("insert into ToDos (ToDoItem, DateAdded) values (@ToDoItem, @DateAdded)", new { ToDoItem = toDo.ToDoItem, DateAdded = toDo.DateAdded });
+            //return cn.ExecuteSql("insert into ToDos (ToDoItem, DateAdded) values (@ToDoItem, @DateAdded)", new { ToDoItem = toDo.ToDoItem, DateAdded = toDo.DateAdded });
+            return cn.ExecuteSql("insert into ToDos (ToDoItem) values (@ToDoItem)", new { ToDoItem = toDo.ToDoItem });
         }
 
         [HttpPost]

@@ -22,8 +22,8 @@ export class NewDashboardComponent implements OnInit {
   private readonly maxOuts: number = 3;
 
   public addToDoForm = new FormGroup({
-    toDoControl: new FormControl('', [Validators.required]),
-    dateAddedControl: new FormControl('', [Validators.required])
+    toDoControl: new FormControl('', [Validators.required])//,
+    //dateAddedControl: new FormControl('', [Validators.required])
   });
 
   constructor(private sb: MatSnackBar, private todo: ToDoClient) { }
@@ -87,11 +87,11 @@ export class NewDashboardComponent implements OnInit {
   onSubmit(event) {
     let toDo = new ToDo();
     toDo.toDoItem = this.addToDoForm.get("toDoControl").value;
-    toDo.dateAdded = this.addToDoForm.get("dateAddedControl").value;
+    //toDo.dateAdded = this.addToDoForm.get("dateAddedControl").value;
     toDo.toDoItem = toDo.toDoItem.trim();
-    toDo.dateAdded = toDo.dateAdded.trim();
+    //toDo.dateAdded = toDo.dateAdded.trim();
 
-    if (toDo.toDoItem === "" || toDo.dateAdded === "") {
+    if (toDo.toDoItem === "" /*|| toDo.dateAdded === ""*/) {
       this.sb.open("Nothing added!", "Try Again", { duration: 2000 });
     } else {
       this.todo.insertToDo(toDo).subscribe(() => {
@@ -100,10 +100,10 @@ export class NewDashboardComponent implements OnInit {
     }
 
     event.currentTarget.reset();
-    this.addToDoForm.reset({ toDoControl: '', dateAddedControl: '' });
+    this.addToDoForm.reset({ toDoControl: ''/*, dateAddedControl: ''*/ });
   }
 
   public clearToDo(): void {
-    this.addToDoForm.reset({ toDoControl: '', dateAddedControl: '' });
+    this.addToDoForm.reset({ toDoControl: ''/*, dateAddedControl: ''*/ });
   }
 }
