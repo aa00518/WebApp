@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ToDo } from './../../services/generated';
 
 @Component({
   selector: 'app-update-todo-dialog',
@@ -7,9 +10,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpdateTodoDialogComponent implements OnInit {
 
-  constructor() { }
+  public addToDoForm = new FormGroup({
+    toDoControl: new FormControl('', [Validators.required])//,
+    //dateAddedControl: new FormControl('', [Validators.required])
+  });
+
+  constructor(public dialogRef: MatDialogRef<UpdateTodoDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: ToDo) { }
 
   ngOnInit() {
   }
 
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  onSubmit(event) {
+    event.currentTarget.reset();
+  }
+
+  public clearToDo(): void {
+
+  }
 }

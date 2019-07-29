@@ -1,3 +1,28 @@
-<p>
-  update-todo-dialog works!
-</p>
+<mat-card class="basic-card">
+  <mat-card-header>
+    <mat-card-title>
+      Add To Do
+      <button mat-icon-button class="more-button" [matMenuTriggerFor]="menuToDo" aria-label="Toggle menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menuToDo="matMenu" xPosition="before">
+        <button mat-menu-item (click)="clearToDo()">Clear</button>
+      </mat-menu>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="dashboard-card-content">
+    <form [formGroup]="addToDoForm" (ngSubmit)="onSubmit($event)">
+      <mat-form-field fxLayout="row" fxLayoutAlign="center">
+        <input matInput type="text" placeholder="To Do" formControlName="toDoControl" required>
+        <mat-error *ngIf="addToDoForm.get('toDoControl').invalid">Required</mat-error>
+      </mat-form-field>
+      <!--<mat-form-field fxLayout="row" fxLayoutAlign="center">
+        <input matInput type="text" placeholder="Date" formControlName="dateAddedControl" required>
+        <mat-error *ngIf="addToDoForm.get('dateAddedControl').invalid">Required</mat-error>
+      </mat-form-field>-->
+      <div fxLayout="row" fxLayoutAlign="center">
+        <button type="submit" mat-raised-button color="accent" [disabled]="!addToDoForm.valid">Add</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

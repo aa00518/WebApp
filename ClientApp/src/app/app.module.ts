@@ -119,7 +119,7 @@ import { UpdateTodoDialogComponent } from './components/update-todo-dialog/updat
     FlexLayoutModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  entryComponents: [ DeleteTodoDialogComponent ],
+  entryComponents: [ DeleteTodoDialogComponent, UpdateTodoDialogComponent ],
   providers: [ SampleDataClient, { provide: API_BASE_URL, useValue: environment.apiBase }, ToDoClient ],
   bootstrap: [ AppComponent ]
 })

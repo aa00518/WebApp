@@ -1,0 +1,21 @@
+.basic-card {
+    margin: 10px;
+}
+
+.more-button {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}
+
+.dashboard-card-content {
+    text-align: center;
+}
+
+.marg {
+    margin: 8px;
+}
+
+.marg-top {
+    margin-top: 20px;
+}

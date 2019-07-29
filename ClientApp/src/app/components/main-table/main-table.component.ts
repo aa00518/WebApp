@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 //import { MatSort } from '@angular/material/sort';
 //import { MainTableDataSource } from './main-table-datasource';
 import { DeleteTodoDialogComponent } from './../delete-todo-dialog/delete-todo-dialog.component';
+import { UpdateTodoDialogComponent } from './../update-todo-dialog/update-todo-dialog.component';
 import { SampleDataClient, WeatherForecast, ToDoClient, ToDo } from '../../services/generated';
 
 @Component({
@@ -21,7 +22,7 @@ export class MainTableComponent implements OnInit {
   //public displayedColumns = ['id', 'name'];
   
   public toDos: ToDo[];
-  public displayedColumnsToDos = ['toDoItem', 'dateAdded', 'id'];
+  public displayedColumnsToDos = ['toDoItem', 'editId', 'delId'];
   
   public wf: WeatherForecast[];
   public displayedColumnsWeather = ['summary', 'temperatureF'];
@@ -70,4 +71,25 @@ export class MainTableComponent implements OnInit {
   //     });
   //   });
   // }
+
+  public showUpdateToDoDialog(id: number): void {
+    let toDo: ToDo = this.toDos.find(td => td.id === id);
+    const dialogRef = this.dialog.open(UpdateTodoDialogComponent, {
+      width: '400px',
+      autoFocus: false,
+      data: toDo,
+      restoreFocus: false
+    });
+
+    dialogRef.afterClosed().subscribe(res => {
+      if (res) {
+        this.tdc.deleteToDo(toDo).subscribe(() => {
+          this.tdc.get().subscribe(r => {
+            this.toDos = r;
+            this.sb.open("Item updated.", "Updated", { duration: 2000 });
+          });
+        });  
+      }
+    });
+  }
 }
